@@ -59,8 +59,7 @@ exports.postLogin = (req, res, next) => {
           if (doMatch) {
             req.session.isLoggedIn = true
             req.session.user = user
-            return req.session.save((err) => {
-              console.error(err)
+            return req.session.save(() => {
               res.redirect('/')
             })
           }
@@ -72,7 +71,7 @@ exports.postLogin = (req, res, next) => {
           res.redirect('/login')
         })
     })
-    .catch((err) => console.log(err))
+    .catch((err) => console.error('Error! in PostLogIn.'))
 }
 
 exports.postSignup = (req, res, next) => {
@@ -110,7 +109,7 @@ exports.postSignup = (req, res, next) => {
 
 exports.postLogout = (req, res, next) => {
   req.session.destroy((err) => {
-    console.error(err)
+    console.error('Error! in Destroying Session.')
     res.redirect('/')
   })
 }
