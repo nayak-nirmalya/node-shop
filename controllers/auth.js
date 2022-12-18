@@ -79,7 +79,7 @@ exports.postLogin = (req, res, next) => {
         return res.status(422).render('auth/login', {
           path: '/login',
           pageTitle: 'LogIn',
-          errorMessage: 'Invalid E-Mail or Password!',
+          errorMessage: 'Invalid E-Mail!',
           oldInput: {
             email: email,
             password: password,
@@ -100,7 +100,7 @@ exports.postLogin = (req, res, next) => {
           return res.status(422).render('auth/login', {
             path: '/login',
             pageTitle: 'LogIn',
-            errorMessage: 'Invalid E-Mail or Password!',
+            errorMessage: 'Invalid Password!',
             oldInput: {
               email: email,
               password: password,
