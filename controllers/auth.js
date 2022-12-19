@@ -113,7 +113,11 @@ exports.postLogin = (req, res, next) => {
           res.redirect('/login')
         })
     })
-    .catch((err) => console.error('Error! in PostLogIn.'))
+    .catch((err) => {
+      const error = new Error(err)
+      error.httpStatusCode = 500
+      return next(error)
+    })
 }
 
 exports.postSignup = (req, res, next) => {
@@ -153,7 +157,11 @@ exports.postSignup = (req, res, next) => {
         html: '<h1> You Signed Up! </h1>',
       })
     })
-    .catch((err) => console.error(err))
+    .catch((err) => {
+      const error = new Error(err)
+      error.httpStatusCode = 500
+      return next(error)
+    })
 }
 
 exports.postLogout = (req, res, next) => {
@@ -207,7 +215,9 @@ exports.postReset = (req, res, next) => {
         })
       })
       .catch((err) => {
-        console.error(err)
+        const error = new Error(err)
+        error.httpStatusCode = 500
+        return next(error)
       })
   })
 }
@@ -236,7 +246,9 @@ exports.getNewPassword = (req, res, next) => {
       })
     })
     .catch((err) => {
-      console.error(err)
+      const error = new Error(err)
+      error.httpStatusCode = 500
+      return next(error)
     })
 }
 
@@ -265,6 +277,8 @@ exports.postNewPassword = (req, res, next) => {
       res.redirect('/login')
     })
     .catch((err) => {
-      console.error(err)
+      const error = new Error(err)
+      error.httpStatusCode = 500
+      return next(error)
     })
 }
