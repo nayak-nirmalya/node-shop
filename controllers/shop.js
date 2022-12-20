@@ -172,23 +172,36 @@ exports.getInvoice = (req, res, next) => {
       pdfDoc.pipe(fs.createWriteStream(invoicePath))
       pdfDoc.pipe(res)
 
-      pdfDoc.text('Hello World!')
+      pdfDoc.fontSize(20).text('Invoice', { underline: true, align: 'center' })
+      pdfDoc.fontSize(14).text('-----------------------------------------', {
+        align: 'center',
+      })
+      let totalPrice = 0
+      order.products.forEach((prod) => {
+        totalPrice += prod.quantity * prod.product.price
+        pdfDoc
+          .fontSize(14)
+          .text(
+            prod.product.title +
+              ' - ' +
+              prod.quantity +
+              ' X ' +
+              '$' +
+              prod.product.price,
+            {
+              align: 'center',
+            },
+          )
+      })
+      pdfDoc.text('-----------------------------------------', {
+        align: 'center',
+      })
+
+      pdfDoc.fontSize(16).text('Total Price: $' + totalPrice, {
+        align: 'center',
+      })
 
       pdfDoc.end()
-      // fs.readFile(invoicePath, (err, data) => {
-      //   if (err) {
-      //     return next(err)
-      //   }
-      //   res.setHeader('Content-Type', 'application/pdf')
-      //   res.setHeader(
-      //     'Content-Disposition',
-      //     `attachment; filename=${invoiceName}`,
-      //   )
-      //   res.send(data)
-      // })
-      // const file = fs.createReadStream(invoicePath)
-
-      // file.pipe(res)
     })
     .catch((err) => next(err))
 }
