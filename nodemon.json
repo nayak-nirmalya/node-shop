@@ -1,0 +1,9 @@
+{
+  "env": {
+    "MONGODB_USER": "nirmalya",
+    "MONGODB_PASSWORD": "nirmalya",
+    "MONGODB_DATABASE": "shop",
+    "STRIPE_KEY": "sk_test_51MH7N5SH7zI2UcjOqAFDyf0ZKvXHedociV7G2IPWpePmOm2mGakBmW39lO4OgAxOWSdQmcfAPxVNc6o0JliA9pNm00pT0HONPi",
+    "SEND_GRID_API_KEY": "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"
+  }
+}

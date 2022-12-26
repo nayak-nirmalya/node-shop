@@ -12,8 +12,7 @@ const multer = require('multer')
 const errorController = require('./controllers/error')
 const User = require('./models/user')
 
-const MONGODB_URI =
-  'mongodb+srv://nirmalya:nirmalya@cluster.a9tjk7u.mongodb.net/shop'
+const MONGODB_URI = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@cluster.a9tjk7u.mongodb.net/${process.env.MONGODB_DATABASE}`
 
 const app = express()
 const store = new MongoDBStore({
@@ -110,7 +109,7 @@ app.use((error, req, res, next) => {
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    app.listen(3000)
+    app.listen(process.env.PORT || 3000)
   })
   .catch((err) => {
     console.log(err)

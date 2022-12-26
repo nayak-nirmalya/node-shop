@@ -5,12 +5,14 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "start": "cross-env NODE_ENV=production MONGODB_USER=nirmalya MONGODB_PASSWORD=nirmalya MONGODB_DATABASE=shop STRIPE_KEY=sk_test_51MH7N5SH7zI2UcjOqAFDyf0ZKvXHedociV7G2IPWpePmOm2mGakBmW39lO4OgAxOWSdQmcfAPxVNc6o0JliA9pNm00pT0HONPi SEND_GRID_API_KEY=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 node app.js",
+    "start-server": "node app.js",
+    "start:dev": "nodemon app.js"
   },
   "author": "Maximilian Schwarzmüller",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "nodemon": "^1.18.3"
   },
   "dependencies": {
