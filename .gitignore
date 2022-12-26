@@ -2,3 +2,5 @@ node_modules
 images
 invoices
 access.log
+server.cert
+server.key
