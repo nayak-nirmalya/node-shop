@@ -35,4 +35,7 @@ npm run start:dev
 To Run PRODUCTION Server:
 npm start
 
+To Generate Key and Certificate:
+openssl req -nodes -new -x509 -keyout server.key -out server.cert
+
 You can configure your own API keys at the 'nodemon.json' file and for production do it in 'package.json'
